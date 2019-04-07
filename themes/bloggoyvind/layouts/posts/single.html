@@ -1,40 +1,21 @@
 {{ define "main" }}
-<section id="main">
-  <h1 id="title">{{ .Title }}</h1>
-  <div>
-        <article id="content">
-           {{ .Content }}
-        </article>
-  </div>
-</section>
-<aside id="meta">
-    <div>
-    <section>
-      <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
-      <h5 id="wordcount"> {{ .WordCount }} Words </h5>
-    </section>
-    {{ with .Params.topics }}
-    <ul id="topics">
-      {{ range . }}
-        <li><a href="{{ "topics" | absURL}}{{ . | urlize }}">{{ . }}</a> </li>
-      {{ end }}
-    </ul>
-    {{ end }}
-    {{ with .Params.tags }}
-    <ul id="tags">
-      {{ range . }}
-        <li> <a href="{{ "tags" | absURL }}{{ . | urlize }}">{{ . }}</a> </li>
-      {{ end }}
-    </ul>
-    {{ end }}
+<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">   
+            <div class="mdc-card">
+                <div class="my-card-content">
+                    <h1 class="mdc-typography mdc-typography--headline2">{{.Title}}</h1>
+                </div>
+                
+                <div class="my-card__media mdc-card__media mdc-card__media--16-9" style="background-image: url({{.Params.frontimage}});">                                           
+                </div>
+                <div class="my-card-content">
+                    <p class="summary">{{.Params.summary}}</p>
+                    <p class="mdc-typography--subtitle2">Publisert {{ .Date.Format "2. Jan 2006 15:04" }}</p>
+                        {{.Content}}
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        {{ with .PrevInSection }}
-          <a class="previous" href="{{.Permalink}}"> {{.Title}}</a>
-        {{ end }}
-        {{ with .NextInSection }}
-          <a class="next" href="{{.Permalink}}"> {{.Title}}</a>
-        {{ end }}
-    </div>
-</aside>
+</div>
 {{ end }}

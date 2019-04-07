@@ -1,0 +1,19 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+    padding:0;
+}
+
+.my-card-content {
+    padding: 16px;
+  }
+
+  .my-card {
+
+    width: 350px;
+  }
+
+  .summary
+  {
+      font-weight:bold;
+  }
